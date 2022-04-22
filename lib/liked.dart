@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'global.dart' as gl;
 class liked extends StatefulWidget {
   const liked({ Key? key }) : super(key: key);
 
@@ -9,9 +9,11 @@ class liked extends StatefulWidget {
 }
 
 class _likedState extends State<liked> {
-  List<String> activity = ["kjhakjsdh", ":jgjhjasd"];
+  
+  List<String> activity = gl.activityList;
   @override
   Widget build(BuildContext context) {
+    activity.removeLast();
     const title = 'Mixed List';
 
     return MaterialApp(
@@ -30,7 +32,12 @@ class _likedState extends State<liked> {
 
             return ListTile(
               title: Text(item),
-              trailing: IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
+              trailing: IconButton(onPressed: () {
+                setState(() {
+                  activity.removeAt(index);
+                });
+                print(activity);
+                }, icon: Icon(Icons.favorite)),
             );
           },
         ),
