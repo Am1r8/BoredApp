@@ -1,8 +1,9 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-import 'dart:math' as math;
 import 'package:swiping_card_deck/swiping_card_deck.dart';
 import 'global.dart' as gl;
 
@@ -20,9 +21,22 @@ class _HomePageState extends State<HomePage> {
   String price = "";
 
   ur() async{
-    var url = Uri.https("www.boredapi.com", '/api/activity/');
+    try {
+      final result = await InternetAddress.lookup('example.com');
+      if (result.isNotEmpty && result[0].rawAddress.isNotEmpty) {}
+    } on SocketException catch (_) {
+        Fluttertoast.showToast(
+        msg: "There is no internet connection",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
+    }
 
-    // Await the http get response, then decode the json-formatted response.
+    var url = Uri.https("www.boredapi.com", '/api/activity/');
     var response = await http.get(url);
     if (response.statusCode == 200) {
       var jsonResponse =
@@ -38,21 +52,30 @@ class _HomePageState extends State<HomePage> {
         price = (pr*10).toString();
       });
     } else {
-      print('Request failed with status: ${response.statusCode}.');
+      Fluttertoast.showToast(
+        msg: "There is no activity",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.CENTER,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.red,
+        textColor: Colors.white,
+        fontSize: 16.0
+    );
     }
   }
 
   liked() {
     ur();
-    print(activity);
     gl.activityList.insert(0, activity);
   }
 
-  
+
 
   @override
   Widget build(BuildContext context) {
-      // ur();
+      if (price == "0") {
+        price = "Free";
+      }
       List<Card> getCardDeck() {
       List<Card> cardDeck = [];
       for (int i = 0; i < 1000; i++) {
@@ -69,18 +92,18 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width - 50,
             child: Center(
               child: Container(
-                constraints: BoxConstraints(minWidth: 150, maxWidth: 250),
+                constraints: const BoxConstraints(minWidth: 150, maxWidth: 250),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text("Activity:\n"+activity, style: TextStyle(fontFamily: 'Nanum', fontSize: 30.0, color: Colors.white), textAlign: TextAlign.center),
-                    SizedBox(height: 50),
-                    Text("Category:\n\n"+type, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center),
-                    SizedBox(height: 50),
-                    Text("Required People: "+participants, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center),
-                    SizedBox(height: 50),
-                    Text("Price: \$" + price, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center)
+                    const SizedBox(height: 50),
+                    Text("Category:\n"+type, style: const TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
+                    const SizedBox(height: 50),
+                    Text("Required People: "+participants, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
+                    const SizedBox(height: 20),
+                    Text("Price: \$" + price, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center)
                   ],
                 ),
               ),
