@@ -12,12 +12,18 @@ class ExamplePage extends StatelessWidget {
       for (int i = 0; i < 500; ++i) {
         cardDeck.add(
         Card(
-          child: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              color: Colors.white,
+          color: Color((math.Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0),
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height - 200, 
+            width: MediaQuery.of(context).size.width - 50,
+            child: Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Text("YOUR TEXT"),
+              ),
             ),
-            child: Text("YOUR TEXT"),
           ),
         ),
         );
@@ -29,11 +35,11 @@ class ExamplePage extends StatelessWidget {
       onDeckEmpty: () => debugPrint("Card deck empty"),
       onLeftSwipe: (Card card) => debugPrint("Swiped left!"),
       onRightSwipe: (Card card) => debugPrint("Swiped right!"),
-      cardWidth: 700,
+      cardWidth: 470,
       swipeThreshold: MediaQuery.of(context).size.width / 3,
       minimumVelocity: 1000,
       rotationFactor: 0.8 / 3.14,
-      swipeAnimationDuration: const Duration(milliseconds: 700),
+      swipeAnimationDuration: const Duration(milliseconds: 500),
     );
     return Scaffold(
       body: Center(
