@@ -117,8 +117,8 @@ class _HomePageState extends State<HomePage> {
     final SwipingCardDeck deck = SwipingCardDeck(
       cardDeck: getCardDeck(),
       onDeckEmpty: () => debugPrint("Card deck empty"),
-      onLeftSwipe: (Card card) => liked(),
-      onRightSwipe: (Card card) =>  ur(),
+      onLeftSwipe: (Card card) => ur(),
+      onRightSwipe: (Card card) =>  liked(),
       cardWidth: 470,
       swipeThreshold: MediaQuery.of(context).size.width / 3,
       minimumVelocity: 1000,

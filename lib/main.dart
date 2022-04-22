@@ -9,7 +9,7 @@ void main() {
   DeviceOrientation.portraitUp,
   ]);
   runApp(MaterialApp(
-      title: 'Announdo',
+      title: 'Bored App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),

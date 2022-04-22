@@ -23,10 +23,7 @@ class _likedState extends State<liked> {
           title: const Text(title),
         ),
         body: ListView.builder(
-          // Let the ListView know how many items it needs to build.
           itemCount: activity.length,
-          // Provide a builder function. This is where the magic happens.
-          // Convert each item into a widget based on the type of item it is.
           itemBuilder: (context, index) {
             final item = activity[index];
 
