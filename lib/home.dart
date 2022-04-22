@@ -58,7 +58,7 @@ class _HomePageState extends State<HomePage> {
       for (int i = 0; i < 1000; i++) {
         cardDeck.add(
         Card(
-          color: Color((math.Random().nextDouble() * 0x11111).toInt()).withOpacity(1.0),
+          color: Color((0xFF715B).toInt()).withOpacity(1.0),
           elevation: 80,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20),
@@ -69,14 +69,18 @@ class _HomePageState extends State<HomePage> {
             width: MediaQuery.of(context).size.width - 50,
             child: Center(
               child: Container(
+                constraints: BoxConstraints(minWidth: 150, maxWidth: 250),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text(activity), 
-                    Text(type), 
-                    Text(participants), 
-                    Text(price)
+                    Text("Activity:\n"+activity, style: TextStyle(fontFamily: 'Nanum', fontSize: 30.0, color: Colors.white), textAlign: TextAlign.center),
+                    SizedBox(height: 50),
+                    Text("Category:\n\n"+type, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center),
+                    SizedBox(height: 50),
+                    Text("Required People: "+participants, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center),
+                    SizedBox(height: 50),
+                    Text("Price: \$" + price, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white), textAlign: TextAlign.center)
                   ],
                 ),
               ),
@@ -113,15 +117,15 @@ class _HomePageState extends State<HomePage> {
                   const SizedBox(height: 70),
                   IconButton(
                     icon: const Icon(Icons.check),
-                    iconSize: 30,
-                    color: Colors.green,
+                    iconSize: 50,
+                    color: Color((0x1EA896).toInt()).withOpacity(1.0),
                     onPressed: deck.animationActive ? null : () => deck.swipeRight() ,
                   ),
                   const SizedBox(width: 40),
                   IconButton(
                     icon: const Icon(Icons.clear),
-                    iconSize: 30,
-                    color: Colors.red,
+                    iconSize: 50,
+                    color: Color((0x523F38).toInt()).withOpacity(1.0),
                     onPressed: deck.animationActive ? null : () => deck.swipeLeft(),
                   ),
                 ],
