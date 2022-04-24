@@ -90,13 +90,13 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    Text("Activity:\n"+activity, style: TextStyle(fontFamily: 'Nanum', fontSize: 30.0, color: Colors.white), textAlign: TextAlign.center),
+                    Text("Activity:\n"+activity, style: const TextStyle(fontFamily: 'Nanum', fontSize: 30.0, color: Colors.white), textAlign: TextAlign.center),
                     const SizedBox(height: 50),
                     Text("Category:\n"+type, style: const TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
                     const SizedBox(height: 50),
-                    Text("Required People: "+participants, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
+                    Text("Required People: "+participants, style: const TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center),
                     const SizedBox(height: 20),
-                    Text("Price: \$" + price, style: TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center)
+                    Text("Price: \$" + price, style: const TextStyle(fontFamily: 'Nanum', fontSize: 20.0, color: Colors.white, fontWeight: FontWeight.w500), textAlign: TextAlign.center)
                   ],
                 ),
               ),
