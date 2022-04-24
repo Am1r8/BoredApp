@@ -1,11 +1,9 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 import 'package:swiping_card_deck/swiping_card_deck.dart';
-import 'global.dart' as gl;
 
 class HomePage extends StatefulWidget {
   const HomePage({ Key? key }) : super(key: key);
@@ -64,11 +62,6 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
-  liked() {
-    ur();
-    gl.activityList.insert(0, activity);
-  }
-
 
 
   @override
@@ -88,8 +81,8 @@ class _HomePageState extends State<HomePage> {
           ),
           semanticContainer: true,
           child: SizedBox(
-            height: MediaQuery.of(context).size.height - 200, 
-            width: MediaQuery.of(context).size.width - 50,
+            height: MediaQuery.of(context).size.height - 50, 
+            width: MediaQuery.of(context).size.width - 20,
             child: Center(
               child: Container(
                 constraints: const BoxConstraints(minWidth: 150, maxWidth: 250),
@@ -118,8 +111,8 @@ class _HomePageState extends State<HomePage> {
       cardDeck: getCardDeck(),
       onDeckEmpty: () => debugPrint("Card deck empty"),
       onLeftSwipe: (Card card) => ur(),
-      onRightSwipe: (Card card) =>  liked(),
-      cardWidth: 470,
+      onRightSwipe: (Card card) =>  ur(),
+      cardWidth: 425,
       swipeThreshold: MediaQuery.of(context).size.width / 3,
       minimumVelocity: 1000,
       rotationFactor: 0.8 / 3.14,
@@ -136,34 +129,7 @@ class _HomePageState extends State<HomePage> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(height: 70),
-                  IconButton(
-                    icon: const Icon(Icons.check),
-                    iconSize: 50,
-                    color: Color((0x1EA896).toInt()).withOpacity(1.0),
-                    onPressed: deck.animationActive ? null : () => deck.swipeRight() ,
-                  ),
-                  const SizedBox(width: 40),
-                  IconButton(
-                    icon: const Icon(Icons.clear),
-                    iconSize: 50,
-                    color: Color((0x523F38).toInt()).withOpacity(1.0),
-                    onPressed: deck.animationActive ? null : () => deck.swipeLeft(),
-                  ),
-                ],
               ),
-              // const SizedBox(height: 20),
-              // TextButton(
-              //   style: TextButton.styleFrom(
-              //     primary: Colors.blue,
-              //   ),
-              //   onPressed: () {
-              //     print(gl.activityList); 
-              //     Navigator.of(context).pushReplacementNamed('/likes');
-              //   },
-              //   child: const Text('Liked'),
-              // ),
             ],
           ),
         ),
@@ -171,4 +137,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
