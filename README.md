@@ -7,11 +7,6 @@ In near future, you will be able to save the liked activities to see through the
 The app is only available on android for now.
 ## Demo:
 
-<<<<<<< HEAD
-## Created by who???!
-
-Created By AlPHA With ❤️
-=======
 https://user-images.githubusercontent.com/68626539/164770399-48663b12-0462-4f8f-b786-666b79a81d60.mp4
 
 ![2](https://user-images.githubusercontent.com/68626539/164770429-66ea7886-2aa3-49ec-8d77-e5d8eb1fa12a.jpg)
@@ -19,8 +14,6 @@ https://user-images.githubusercontent.com/68626539/164770399-48663b12-0462-4f8f-
 ![1](https://user-images.githubusercontent.com/68626539/164770432-ccfc53b0-2627-4056-98c2-8de83e52fabe.jpg)
 
 
-
 ## Created by who???!
 
 Created By AlPHA With ❤️
->>>>>>> dbeb9112760cc8f1befc6bf8bfab637db7488c19
